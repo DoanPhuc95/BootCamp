@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.validation.Valid;
 
 public class MembersJudgeRequestDto {
-	
+	@Valid
 	private ArrayList<MemberJudgeRequestDto> memberCandidatesList;
 	
 	public MembersJudgeRequestDto() {

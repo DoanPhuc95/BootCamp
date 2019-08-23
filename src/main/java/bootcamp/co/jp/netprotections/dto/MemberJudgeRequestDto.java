@@ -1,27 +1,37 @@
 
 package bootcamp.co.jp.netprotections.dto;
 
-import javax.validation.constraints.Size;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class MemberJudgeRequestDto {
+	@NotNull
 	private String memberName;
 	
-	@Size(min=1, max=5, message="It must be between 1 and 5")
+	@Min(0)
+	@Max(5)
 	private int eventPlanning;
 	
-	@Size(min=1, max=5, message="It must be between 1 and 5")
+	@Min(0)
+	@Max(5)
 	private int cogitation;
 	
-	@Size(min=1, max=5, message="It must be between 1 and 5")
+	@Min(0)
+	@Max(5)
 	private int coodination;
 	
-	@Size(min=1, max=5, message="It must be between 1 and 5")
+	@Min(0)
+	@Max(5)
 	private int programmingAbility;
 	
-	@Size(min=1, max=5, message="It must be between 1 and 5")
+	@Min(0)
+	@Max(5)
 	private int infrastructureKnowledge;
 
-	public MemberJudgeRequestDto(String memberName, int eventPlanning, int cogitation, int coodination, 
+	public MemberJudgeRequestDto(String memberName, @Min(0) @Max(5) int eventPlanning, int cogitation, int coodination, 
 			int programmingAbility, int infrastructureKnowledge) {
 		this.memberName = memberName;
 		this.eventPlanning = eventPlanning;
@@ -79,6 +89,7 @@ public class MemberJudgeRequestDto {
 		this.infrastructureKnowledge = infrastructureKnowledge;
 	}
 	
+	@JsonIgnore
 	public int getTotalPoint() {
 		return eventPlanning + cogitation + coodination + programmingAbility + infrastructureKnowledge;
 	}
