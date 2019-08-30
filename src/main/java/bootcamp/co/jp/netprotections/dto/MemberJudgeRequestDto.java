@@ -3,12 +3,11 @@ package bootcamp.co.jp.netprotections.dto;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class MemberJudgeRequestDto {
-	@NotNull
 	private String memberName;
 	
 	@Min(0)
@@ -17,6 +16,7 @@ public class MemberJudgeRequestDto {
 	
 	@Min(0)
 	@Max(5)
+	
 	private int cogitation;
 	
 	@Min(0)
@@ -31,7 +31,7 @@ public class MemberJudgeRequestDto {
 	@Max(5)
 	private int infrastructureKnowledge;
 
-	public MemberJudgeRequestDto(String memberName, @Min(0) @Max(5) int eventPlanning, int cogitation, int coodination, 
+	public MemberJudgeRequestDto(String memberName, int eventPlanning, int cogitation, int coodination, 
 			int programmingAbility, int infrastructureKnowledge) {
 		this.memberName = memberName;
 		this.eventPlanning = eventPlanning;
