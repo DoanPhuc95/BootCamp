@@ -45,13 +45,12 @@ public class MemberJudgeController {
 		NullPointerException.class, HttpMessageNotReadableException.class})
 	public ResponseEntity<?> handleConstraintViolation(Exception ex, WebRequest request) {
 		HttpHeaders headers = new HttpHeaders();
-		System.out.println(ex.getMessage());
 		MediaType content = MediaType.APPLICATION_JSON_UTF8;
 		headers.setContentType(content);
-		String res = "{\"errorDetail\":\"" + ex.getMessage().replace("\"", "") + "\","
+		String mess = ex.getMessage()==null?"":ex.getMessage().replace("\"", "");
+		String res = "{\"errorDetail\":\"" + mess + "\","
 				+ "\"errorType\":\"" + ex.getClass().getSimpleName()
 				+ "\"}";
 		return new ResponseEntity(res, headers, HttpStatus.BAD_REQUEST);
-
 	}
 }
